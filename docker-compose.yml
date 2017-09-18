@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        working_dir: /app
+        volumes:
+            - .:/app
+        environment:
+          - PYTHONPATH=/app/src
+          - WORKON_HOME=/app/pipenv
+          - TEST_OPENWEATHER_API_KEY
