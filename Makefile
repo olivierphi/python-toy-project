@@ -6,4 +6,4 @@ lint:
 test: test_domain
 
 test_domain:
-	PYTHONDONTWRITEBYTECODE=1 $(RUN_PYTHON) -m pytest --pyargs app.domain.testing -x
+	PYTHONDONTWRITEBYTECODE=1 $(RUN_PYTHON) -m pytest --pyargs app.domain.tests -x
