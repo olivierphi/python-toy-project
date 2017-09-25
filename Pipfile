@@ -4,11 +4,13 @@ verify_ssl = true
 
 [packages]
 requests = "==2.18.*"
+scute = "==1.*"
+flask = "==0.12"
 
 [dev-packages]
 pytest = "==3.2.*"
 pylint = "==1.7.*"
-
+pytest-pylint = "*"
 
 [requires]
 python_version = "3.6"
