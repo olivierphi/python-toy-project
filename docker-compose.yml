@@ -14,4 +14,5 @@ services:
         environment:
           - PYTHONPATH=/app/src
           - WORKON_HOME=/app/pipenv
+          - OPENWEATHER_API_KEY
           - TEST_OPENWEATHER_API_KEY

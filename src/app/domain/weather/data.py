@@ -5,6 +5,10 @@ import enum
 @enum.unique
 class CityName(enum.Enum):
     EDINBURGH = 1
+    LONDON = 2
+    PARIS = 3
+    FIRENZE = 4
+    AMSTERDAM = 5
 
 
 # @link https://docs.python.org/3/library/enum.html#using-automatic-values

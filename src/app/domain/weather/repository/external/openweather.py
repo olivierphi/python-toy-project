@@ -7,6 +7,10 @@ import app.domain.weather.repository.external.errors as repository_errors
 
 _CITIES_IDS = {
     weather_data.CityName.EDINBURGH: 3333229,
+    weather_data.CityName.LONDON: 2643743,
+    weather_data.CityName.PARIS: 6455259,
+    weather_data.CityName.FIRENZE: 6542285,
+    weather_data.CityName.AMSTERDAM: 2759794,
 }
 
 _ICONS_WEATHER_TYPE_MAPPING = {
@@ -28,11 +32,13 @@ class OpenWeatherRepository:
         self._api_url = api_url
         self._api_key = api_key
 
-    def get_weather_data(self, city_name: weather_data.CityName) -> weather_data.WeatherData: # work in progress, the result is None at the moment...
+    def get_weather_data(self, city_name: weather_data.CityName) -> weather_data.WeatherData:
 
         # Let's start with some input checking...
         if not self._api_url:
             raise repository_errors.ExternalWeatherDataProviderNotInitialisedError()
+        if not isinstance(city_name, weather_data.CityName):
+            raise weather_errors.InvalidCityNameError(city_name)
         if city_name not in weather_data.CityName:
             raise weather_errors.InvalidCityNameError(city_name)
 
@@ -60,7 +66,7 @@ class OpenWeatherRepository:
         return weather_data.WeatherData(
             city_name=city_name,
             weather_type=_ICONS_WEATHER_TYPE_MAPPING[icon_data_num],
-            wind_speed=float(json_data['main']['temp']),
+            wind_speed=float(json_data['wind']['speed']),
             temperature=float(json_data['main']['temp']),
             humidity=int(json_data['main']['humidity']),
         )
