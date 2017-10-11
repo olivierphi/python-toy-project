@@ -1,6 +1,8 @@
 # pylint: disable=invalid-name
 
+import asyncio
 import os
+import aiohttp
 import pytest
 import app.domain.weather.data as weather_data
 import app.domain.weather.errors as weather_errors
@@ -39,3 +41,24 @@ def test_module_can_retrieve_city_weather_data():
     assert result.humidity >= 0
     assert -60 < result.temperature < 60
     assert result.wind_speed >= 0
+
+
+def test_module_can_retrieve_city_weather_data_asynchronously():
+    if not VALID_API_KEY:
+        raise EnvironmentError('Missing "TEST_OPENWEATHER_API_KEY" environment variable')
+    sut = OpenWeatherRepository('https://api.openweathermap.org/data/2.5', VALID_API_KEY)
+
+    city_names = (weather_data.CityName.EDINBURGH, weather_data.CityName.PARIS)
+    results = []
+    async def fetch_in_parallel(loop):
+        async with aiohttp.ClientSession(loop=loop) as session:
+            for city_name in city_names:
+                result = await sut.get_weather_data_async(session, city_name)
+                results.append(result)
+
+    loop = asyncio.new_event_loop()
+    loop.run_until_complete(fetch_in_parallel(loop))
+
+    assert len(results) == len(city_names)
+    assert results[0].city_name == weather_data.CityName.EDINBURGH
+    assert results[1].city_name == weather_data.CityName.PARIS
