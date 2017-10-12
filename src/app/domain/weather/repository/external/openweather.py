@@ -5,6 +5,7 @@ import aiohttp
 import app.domain.weather.data as weather_data
 import app.domain.weather.errors as weather_errors
 import app.domain.weather.repository.external.errors as repository_errors
+from app.domain.weather.repository import WeatherRepository
 
 _CITIES_IDS = {
     weather_data.CityName.EDINBURGH: 3333229,
@@ -27,7 +28,7 @@ _ICONS_WEATHER_TYPE_MAPPING = {
 }
 
 
-class OpenWeatherRepository:
+class OpenWeatherRepository(WeatherRepository):
 
     def __init__(self, api_url: str, api_key: str):
         self._api_url = api_url
@@ -82,7 +83,8 @@ class OpenWeatherRepository:
             'params': endpoint_params,
         }
 
-    def _convert_json_response_to_weather_data(self, city_name: weather_data.CityName, json_data: dict) -> weather_data.WeatherData:
+    @staticmethod
+    def _convert_json_response_to_weather_data(city_name: weather_data.CityName, json_data: dict) -> weather_data.WeatherData:
         icon_data = json_data['weather'][0]['icon']
         icon_data_num = re.sub(r'^(\d+)(d|n)$', r'\1', icon_data)
         return weather_data.WeatherData(
