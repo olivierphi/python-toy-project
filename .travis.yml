@@ -1,0 +1,14 @@
+language: python
+python:
+  - "3.6"
+
+env:
+  - PYTHONPATH=$PWD/src
+
+install:
+  - pip install pipenv
+  - pipenv install --dev
+
+script:
+  - pipenv run python -m pylint app
+  - pipenv run python -m pytest --pyargs app
