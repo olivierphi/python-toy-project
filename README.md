@@ -1,6 +1,8 @@
 # Python toy project: a weather API
 
-Not that I'm especially interested in weather:-), but the goal was to play with the following concepts in Python:
+[![Build Status](https://travis-ci.org/DrBenton/python-toy-project.svg?branch=master)](https://travis-ci.org/DrBenton/python-toy-project)
+
+Not that I'm especially interested in weather :-), but the goal was to play with the following concepts in Python:
  * Dependencies management via [Pipenv](https://docs.pipenv.org/)
  * Unit tests with [pytest](https://docs.pytest.org/en/latest/)
  * Parallel operations via [asyncio](https://docs.python.org/3/library/asyncio.html) and [aiohttp](http://aiohttp.readthedocs.io/en/stable/index.html)
