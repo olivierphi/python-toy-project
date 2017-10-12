@@ -1,6 +1,7 @@
-
+import asyncio
 import os
 from scute import Container
+from app.domain.weather.repository import WeatherRepository
 from app.domain.weather.repository.external.openweather import OpenWeatherRepository
 
 container = Container()
@@ -12,5 +13,8 @@ container['weather.weather_provider.open_weather.api_key'] = os.environ['OPENWEA
     dependencies=('weather.weather_provider.open_weather.url','weather.weather_provider.open_weather.api_key'),
     injection_id='weather_provider'
 )
-def _weather_provider(api_url: str, api_key: str) -> OpenWeatherRepository:
+def _weather_provider(api_url: str, api_key: str) -> WeatherRepository:
     return OpenWeatherRepository(api_url, api_key)
+
+
+container['loop'] = lambda c: asyncio.new_event_loop()

@@ -58,6 +58,7 @@ def test_module_can_retrieve_city_weather_data_asynchronously():
 
     loop = asyncio.new_event_loop()
     loop.run_until_complete(fetch_in_parallel(loop))
+    loop.close()
 
     assert len(results) == len(city_names)
     assert results[0].city_name == weather_data.CityName.EDINBURGH
