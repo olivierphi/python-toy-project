@@ -6,5 +6,5 @@ class ExternalWeatherDataProviderNotInitialisedError(Exception):
 class ExternalWeatherDataProviderBadAPIKey(Exception):
 
     def __init__(self, api_key):
-        super()
+        super().__init__()
         self.api_key = api_key

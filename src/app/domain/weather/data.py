@@ -13,6 +13,7 @@ class CityName(enum.Enum):
 
 # @link https://docs.python.org/3/library/enum.html#using-automatic-values
 class AutoName(enum.Enum):
+    # pylint: disable=no-self-argument, unused-argument
     def _generate_next_value_(name, start, count, last_values):
         return name
 
@@ -31,6 +32,7 @@ class WeatherType(AutoName):
 
 
 class WeatherData(NamedTuple):
+    # pylint: disable=too-few-public-methods
     city_name: CityName
     weather_type: WeatherType
     wind_speed: float

@@ -4,6 +4,7 @@ import aiohttp
 from app.api.container import container
 from app.domain.weather.data import CityName
 
+# pylint: disable=invalid-name
 current_weather = flask.Blueprint('current weather', __name__)
 
 @current_weather.route('/<string:city_name>', methods=['GET'])
@@ -12,7 +13,7 @@ def get_city_weather(city_name: str):
     if city_name not in CityName.__dict__:
         flask.abort(404, 'No weather data for this city')
 
-    weather_provider = container['weather_provider'] # type: app.domain.weather.repository.app.domain.weather.repository.WeatherRepository
+    weather_provider = container['weather_provider']
     weather_data = weather_provider.get_weather_data(CityName[city_name])
     return flask.jsonify(_get_city_weather_json(weather_data))
 
@@ -20,7 +21,7 @@ def get_city_weather(city_name: str):
 @current_weather.route('/all', methods=['GET'])
 def get_all_cities_weather():
     loop = container['loop']
-    weather_provider = container['weather_provider'] # type: app.domain.weather.repository.app.domain.weather.repository.WeatherRepository
+    weather_provider = container['weather_provider']
 
     all_data = []
 
