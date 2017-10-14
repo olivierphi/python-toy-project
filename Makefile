@@ -11,10 +11,10 @@ test_domain:
 test_app:
 	$(RUN_PYTHON) -m pytest --pyargs app.api
 
-start_dev:
+start_flask:
 	docker-compose run --rm --entrypoint pipenv \
 		-e PYTHONPATH=/app/src \
-		-e FLASK_APP=app.api \
+		-e FLASK_APP=app.api.flask \
 		-e FLASK_DEBUG=1 \
 		-e WORKON_HOME=/app/pipenv \
 		-p 5000:5000	 \

@@ -1,7 +1,7 @@
 
 import flask
 import aiohttp
-from app.api.container import container
+from .container import container
 from app.domain.weather.data import CityName
 
 # pylint: disable=invalid-name
