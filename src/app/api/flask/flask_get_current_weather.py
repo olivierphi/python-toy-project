@@ -1,8 +1,8 @@
 
 import flask
 import aiohttp
-from .container import container
 from app.domain.weather.data import CityName
+from .container import container
 
 # pylint: disable=invalid-name
 current_weather = flask.Blueprint('current weather', __name__)

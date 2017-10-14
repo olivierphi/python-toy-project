@@ -10,5 +10,11 @@ install:
   - pipenv install --dev
 
 script:
-  - pipenv run python -m pylint app
+  # Linting
+  # We have duplicate code between the Django and Flask app, and don't want to have a PyLint warning about that.
+  # --> we have to launch 3 distinct PyLints, instead of just launching on on the "app" top package:
+  - pipenv run python -m pylint app.domain
+  - pipenv run python -m pylint app.api.django
+  - pipenv run python -m pylint app.api.flask
+  # Unit tests
   - pipenv run python -m pytest --pyargs app

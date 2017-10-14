@@ -9,6 +9,7 @@ PARAMETERS = {
 }
 
 
+# pylint: disable=invalid-name
 _services_singleton_instances = {}
 
 

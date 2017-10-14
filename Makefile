@@ -3,7 +3,10 @@ RUN_PYTHON = docker-compose run --rm --entrypoint pipenv app run python
 test: test_domain test_app
 
 lint:
-	$(RUN_PYTHON) -m pylint app
+# We have duplicate code between the Django and Flask app, and don't want to have a PyLint warning about that
+	$(RUN_PYTHON) -m pylint app.domain
+	$(RUN_PYTHON) -m pylint app.api.django
+	$(RUN_PYTHON) -m pylint app.api.flask
 
 test_domain:
 	$(RUN_PYTHON) -m pytest --pyargs app.domain.tests
