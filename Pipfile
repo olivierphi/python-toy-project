@@ -7,6 +7,7 @@ requests = "==2.18.*"
 scute = "==1.*"
 flask = "==0.12"
 aiohttp = "*"
+django = "==1.11.*"
 
 [dev-packages]
 pytest = "==3.2.*"

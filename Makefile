@@ -11,11 +11,18 @@ test_domain:
 test_app:
 	$(RUN_PYTHON) -m pytest --pyargs app.api
 
+pipenv_shell:
+	docker-compose run --rm --entrypoint pipenv \
+		app shell --fancy
+
+start_django:
+	docker-compose run --rm --entrypoint pipenv \
+		-p 5000:5000 \
+		app run python src/app/api/django/manage.py runserver 0:5000
+
 start_flask:
 	docker-compose run --rm --entrypoint pipenv \
-		-e PYTHONPATH=/app/src \
 		-e FLASK_APP=app.api.flask \
 		-e FLASK_DEBUG=1 \
-		-e WORKON_HOME=/app/pipenv \
-		-p 5000:5000	 \
+		-p 5000:5000 \
 		app run python -m flask run --host=0.0.0.0

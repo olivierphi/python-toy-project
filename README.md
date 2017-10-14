@@ -10,7 +10,9 @@ Not that I'm especially interested in weather :-), but the goal was to play with
  * Dependency injection, via [scute](https://github.com/DrBenton/scute), a Python clone of PHP's [Pimple](https://pimple.symfony.com/)
  * Minimalist JSON API with [Flask](http://flask.pocoo.org/)  
    _(could be interesting to start with something even more minimalistic like [Roll](http://roll.readthedocs.io/en/latest/), as I don't need Jinja for a JSON API)_
+ * "Closer to real world" JSON API with [Django](https://docs.djangoproject.com)  
+   The more I work with Django, the more I realise that Symfony basically copied lots of Django features: templating system, Forms, etc :-)
 
 Even if it's a dummy and very small project I have been able to apply most of the best practices I use for my usual domain of expertise ([Symfony](http://symfony.com/what-is-symfony)): DDD-like development, dependency injection, Makefile, Docker Compose...
 
-I really enjoyed using Python! Clear syntax, rich stdlib, functions named arguments, type hinting, coroutines... Great stuff! :-)
+I really enjoy Python! Clear syntax, rich stdlib, functions named arguments, type hinting, coroutines... Great stuff! :-)
