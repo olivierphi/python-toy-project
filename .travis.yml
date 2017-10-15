@@ -24,7 +24,5 @@ script:
   ####
   # Domain:
   - pipenv run python -m pytest --pyargs app.domain.tests
-  # Flask app:
-  - pipenv run python -m pytest --pyargs app.api.flask
   # Django app:
   - pipenv run python src/app/api/django/manage.py test

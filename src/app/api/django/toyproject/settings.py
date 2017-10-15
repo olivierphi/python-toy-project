@@ -25,7 +25,7 @@ SECRET_KEY = '(iiwdv2e34=mfqqk%km9-kp4w7^2j+oedzz@@x5o_g_6(e3ohb'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['testserver']
 
 
 # Application definition
@@ -120,4 +120,10 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-# Custom apps config
+# Local app config
+# pylint: disable=wildcard-import
+try:
+    from .settings_local import *
+    print('Local (unversioned) "settings_local.py" found. They will override the base ones.')
+except ImportError:
+    pass

@@ -11,9 +11,6 @@ lint:
 test_domain:
 	$(RUN_PYTHON) -m pytest --pyargs app.domain.tests
 
-test_flask:
-	$(RUN_PYTHON) -m pytest --pyargs app.api.flask
-
 test_django:
 	$(RUN_PYTHON) src/app/api/django/manage.py test
 
