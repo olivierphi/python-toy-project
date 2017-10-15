@@ -2,6 +2,13 @@
 
 [![Build Status](https://travis-ci.org/DrBenton/python-toy-project.svg?branch=master)](https://travis-ci.org/DrBenton/python-toy-project)
 
+
+![Python logo](https://i2.wp.com/www.genohm.com/wp-content/uploads/2017/03/logo_python.png?resize=201%2C200)
+![Django logo](http://www.tivix.com/uploads/images/django.width-200.png)
+![Flask logo](https://iotbytes.files.wordpress.com/2016/08/flask.png?w=150&h=150)
+![aiohttp logo](http://aiohttp.readthedocs.io/en/stable/_static/aiohttp-icon-128x128.png)
+
+
 Not that I'm especially interested in weather :-), but the goal was to play with the following concepts in Python:
  * Dependencies management via [Pipenv](https://docs.pipenv.org/)
  * Unit tests with [pytest](https://docs.pytest.org/en/latest/)
